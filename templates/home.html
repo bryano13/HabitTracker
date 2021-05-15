@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static',filename='styles/table.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static',filename='styles/button.css') }}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <title>Home Page</title>
+</head>
+<body>          
+    <div class="container">
+        <ul class="responsive-table">
+            
+            <li class="table-header">
+                <div class="col col-1">ID</div>
+                <div class="col col-2">Habit Name</div>
+                <div class="col col-3" >Location</div>
+                <div class="col col-4" >Time</div>
+                <div class="col col-5" >Done?</div>
+                <div class="col col-6" >Count</div>
+            </li>
+            <!-- Counter for the id of each habit -->
+            {% set i = namespace(value=0) %}
+            <!-- For loop to create the table of habits from the objects save in objList -->
+            {% for obj in objList %}
+                <div id="new_row">
+                    <li class="table-row">
+                        <div class="col col-1" data-label="ID">{{ obj.id }}</div>
+                        <div class="col col-2" data-label="Habit Name">{{ obj.name }}</div>
+                        <div class="col col-3" data-label="Location">{{obj.location}}</div>
+                        <div class="col col-4" data-label="Time">{{obj.time}}</div>
+                        <div class="col col-5" data-label="Done">
+                            <button id="{{obj.id}}" name="{{ obj.id }}" class="{{ classlist[i.value] }}" {{obj.disable}}>
+                                {{obj.done}}
+                            </button>
+                        </div>
+                        <!--Thus part gets replaced by count.html after pressing the button-->
+                        <div class="col col-6" data-label="Count" id="c{{ obj.id }}"> {{obj.count}} </div>
+                        <!--End of part replaced with Ajax-->
+                    </li>
+                </div>
+            {% set i.value = i.value + 1 %}
+            {% endfor %}
+            </ul>
+            <br>
+        <!--link to got to new.html-->  
+        <a href="/new" style="margin-left: 40px;">Add a new habit</a>
+    </div><br>
+
+<!-- Script to implement ajax on the DOM, to be able to post without reloading the page -->
+<script src="{{ url_for('static', filename='ajax.js') }}"></script>
+
+</body>
+</html>

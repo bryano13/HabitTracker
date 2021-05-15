@@ -1,0 +1,32 @@
+body{
+    margin-top: 25px !important;
+    text-align: center !important;
+}
+/*Bootstrap class for input elements*/
+.form-control{
+    margin-bottom: 20px;
+}
+/*class for the time input element (0:00)*/
+.time{
+    text-align: center;
+}
+/*bootstrap row*/
+.row{
+    text-align: center;
+}
+/*Bootstrap container for the body tag*/
+.container{
+    max-width: 600px !important;
+}
+/*Submit button*/
+.btn{
+    padding: 5px 20px !important;
+    text-align: center;
+    width: 100%;
+}
+/*Div element parent of the submit button*/
+.botoncito{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
