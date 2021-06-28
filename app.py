@@ -32,8 +32,7 @@ def updatedecimal():
                                                    id=id,
                                                    name=name,
                                                    time=time,
-                                                   location=location,
-                                                   newclass="newclass"))
+                                                   location=location))
         except Exception:
             raise
 
@@ -41,21 +40,8 @@ def updatedecimal():
 @app.route('/', methods=["GET", "POST"])
 def home_page():
     """ Home page """
-    classlist = []
-    if len(habitList) > 0:
-        for obj in habitList:
-            obj.press()
-            if obj.count == 0:
-                newclass = "learn-more"
-                classlist.append(newclass)
-            else:
-                newclass = "newclass"
-                classlist.append(newclass)
-        return render_template(
-            "home.html", objList=habitList, classlist=classlist)
-    else:
-        return render_template(
-            "home.html", objList=habitList, count=0, newclass="learn-more")
+    return render_template(
+        "home.html", objList=habitList, count=0, newclass="learn-more")
 
 
 @app.route("/new", methods=["GET", "POST"])

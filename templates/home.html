@@ -21,6 +21,12 @@
                 <div class="col col-6" >Count</div>
             </li>
             <!-- Counter for the id of each habit -->
+            {% if objList|length == 0 %}
+
+            <h4 style="color: rgba(255, 0, 0, 0.548)">No habits added yet, please create a new habit.</h4>
+
+            {% else %}
+
             {% set i = namespace(value=0) %}
             <!-- For loop to create the table of habits from the objects save in objList -->
             {% for obj in objList %}
@@ -31,7 +37,7 @@
                         <div class="col col-3" data-label="Location">{{obj.location}}</div>
                         <div class="col col-4" data-label="Time">{{obj.time}}</div>
                         <div class="col col-5" data-label="Done">
-                            <button id="{{obj.id}}" name="{{ obj.id }}" class="{{ classlist[i.value] }}" {{obj.disable}}>
+                            <button id="{{obj.id}}" name="{{ obj.id }}" class="learn-more">
                                 {{obj.done}}
                             </button>
                         </div>
@@ -42,6 +48,7 @@
                 </div>
             {% set i.value = i.value + 1 %}
             {% endfor %}
+            {% endif %}
             </ul>
             <br>
         <!--link to got to new.html-->  

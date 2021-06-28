@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from datetime import datetime
-import time
 
 
 class Habit():
@@ -27,24 +26,3 @@ class Habit():
         if self.count > 0:
             self.done = "DONE!"
             self.disable = "disabled"
-
-    def refresh(self):
-        return datetime.today()
-
-
-# obj = Habit("Bryan", "room", 12)
-# date = obj.date
-# print(date)
-# time.sleep(1)
-# date1 = obj.refresh()
-# print(date1)
-# print(date1 - date)
-# date3 = datetime.today().isoformat()
-# print(date3, type(date3))
-# string = datetime.strptime(
-#     "2021-03-17T02:45:57.683086", "%Y-%m-%dT%H:%M:%S.%f")
-# print(type(string), string)
-# delta = string - date
-# print(type(string - date), delta)
-# obj1 = Habit("Bryan", "room", 13)
-# print(obj1.__dict__)
